@@ -1,11 +1,10 @@
 #!/bin/bash
 ENVIRONMENT=$1
 if [ $ENVIRONMENT = "QA" ];then
-	sshpass -p "gamut" scp target/gamutkart.war gamut@172.17.0.2:/home/gamut/Distros/apache-tomcat-8.5.23/webapps
-	sshpass -p "gamut" ssh gamut@172.17.0.2 "JAVA_HOME=/home/gamut/Distros/jdk1.8.0_151" "/home/gamut/Distros/apache-tomcat-8.5.23/bin/startup.sh"
+        sshpass -p "ec2-user" scp target/ec2-userkart.war ec2-user@172-31-1-55:/home/ec2-user/Distros/apache-tomcat-8.5.34/webapps
+        sshpass -p "ec2-user" ssh ec2-user@172-31-1-55 "JAVA_HOME=/home/ec2-user/Distros/jdk1.8.0_151" "/home/ec2-user/Distros/apache-tomcat-8.5.23/bin/startup.sh"
 
 elif  [ $ENVIRONMENT = "SIT" ];then
-	sshpass -p "gamut" scp target/gamutkart.war gamut@172.17.0.3:/home/gamut/Distros/apache-tomcat-8.5.23/webapps
-	sshpass -p "gamut" ssh gamut@172.17.0.3 "JAVA_HOME=/home/gamut/Distros/jdk1.8.0_151" "/home/gamut/Distros/apache-tomcat-8.5.23/bin/startup.sh"
+        sshpass -p "ec2-user" scp target/ec2-userkart.war ec2-user@172.31.31.221:/home/ec2-user/Distros/apache-tomcat-8.5.34/webapps
+        sshpass -p "ec2-user" ssh ec2-user@172.31.31.221 "JAVA_HOME=/home/ec2-user/Distros/jdk1.8.0_151" "/home/ec2-user/Distros/apache-tomcat-8.5.23/bin/startup.sh"
 fi
-
