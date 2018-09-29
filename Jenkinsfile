@@ -1,23 +1,9 @@
-pipeline {
-/*
-	environment {
-        MAVEN_HOME = tool('maven3.5')
+node{
+   stage('SCM checkout'){
+      git 'https://github.com/sayz1992/hello-world.git'
     }
-*/
-	agent {
-		label 'win-label-1'
-	} 
+   stage('Compile Package'){
+      sh 'mvn package'
+      }
+    }
 
-	stages {
-	    stage('Checkout') {
-	        steps {
-				checkout scm			        }
-		    }
-		stage('Build') {
-	        steps {
-//				sh '${MAVEN_HOME}/bin/mvn install'
-				sh '/home/gamut/Distros/apache-maven-3.5.4/bin/mvn install'
-	        }
-		}
-	}
-}
