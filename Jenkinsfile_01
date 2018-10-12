@@ -1,0 +1,25 @@
+pipeline {
+       agent any
+              stages {
+                        stage( 'SCM checkout'){
+                               steps { 
+                                       git 'https://github.com/sayz1992/hello-world.git'
+                                      }
+                              }
+                        stage('maven build'){
+                               steps {
+                                       withMaven(maven : '3_5_4') {
+                                       sh 'mvn install'
+                                      }
+                                  }
+                              }
+                        stage('maven deploy'){
+                               steps{
+                                       withMaven(maven : '3_5_4') {
+                                       sh 'mvn deploy'
+                                    }
+                              }
+                         }
+                    }
+         }
+
